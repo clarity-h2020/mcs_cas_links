@@ -1,0 +1,5 @@
+name: 'Register Button'
+type: module
+description: 'The register button for myclimateservices and the cas links for the user menu'
+core: 8.x
+package: 'scc'

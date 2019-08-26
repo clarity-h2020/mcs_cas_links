@@ -1,0 +1,10 @@
+mcs_register_button.config_form:
+  title: 'CAS login link'
+  route_name: mcs_register_button.config_form
+  description: 'A description for the menu entry'
+  parent: user.admin_index
+  weight: 99
+user.cas_logout:
+  weight: 10
+  menu_name: account
+  class: Drupal\mcs_register_button\Plugin\Menu\CasLoginLogoutMenuLink

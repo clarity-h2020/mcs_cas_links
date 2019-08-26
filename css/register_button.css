@@ -1,0 +1,25 @@
+ 
+
+#register-wrapper {
+  width: 100%;
+  position: relative;
+  background-image: url('logo.png');
+  background-size: cover;
+  border-radius: 50%;
+  
+}
+
+#register-wrapper:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+#register-wrapper > div {
+  position: absolute;
+  display: block;
+  width: 100%;
+  margin-top: 50%;
+  transform: translate(0, -50%);
+  text-align: center;
+}

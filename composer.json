@@ -1,0 +1,9 @@
+{
+  "name": "drupal/mcs_register_button",
+  "type": "drupal-module",
+  "description": "Register button and CAS login menu entry for Myclimateservices.eu",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": { }
+}

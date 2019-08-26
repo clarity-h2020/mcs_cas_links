@@ -1,0 +1,4 @@
+register-button:
+  css:
+    theme:
+      css/register_button.css: {}

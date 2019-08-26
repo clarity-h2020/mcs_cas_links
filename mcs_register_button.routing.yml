@@ -1,0 +1,11 @@
+
+mcs_register_button.config_form:
+  path: '/admin/config/people/cas_login'
+  defaults:
+    _form: '\Drupal\mcs_register_button\Form\ConfigForm'
+    _title: 'ConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
