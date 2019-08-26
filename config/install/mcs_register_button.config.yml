@@ -1,0 +1,4 @@
+cas_sso_logout_title: 'CAS logout'
+cas_sso_login_title: 'CAS login'
+cas_sso_logout_path: '/caslogout'
+cas_sso_login_path: '/caslogin'

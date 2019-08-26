@@ -62,7 +62,6 @@ class CasLoginLogoutMenuLink extends MenuLinkDefault {
   public function getTitle() {
     
     $conf = $this->config_factory->get('mcs_register_button.config'); 
-    kint($conf);
     if ($this->currentUser->isAuthenticated()) {
       return $this->t($conf->get('cas_sso_logout_title'));
     }
@@ -79,10 +78,16 @@ class CasLoginLogoutMenuLink extends MenuLinkDefault {
     $conf = $this->config_factory->get('mcs_register_button.config'); 
 
     if ($this->currentUser->isAuthenticated()) {
-      return Url::fromUserInput($conf->get('cas_sso_logout_path'));
+      $url = $conf->get('cas_sso_logout_path');
     }
     else {
-      return Url::fromUri($conf->get('cas_sso_login_path'));
+      $url = $conf->get('cas_sso_login_path');
+    }
+
+    if(substr($url, 0, 4) == "http"){
+      return Url::fromUri($url);
+    }else{
+      return Url::fromUserInput($url);
     }
   }
 

@@ -37,6 +37,7 @@ class ConfigForm extends ConfigFormBase {
       '#maxlength' => 64,
       '#size' => 32,
       '#default_value' => $config->get('cas_sso_login_title'),
+      '#required' => TRUE,
     ];
     $form['cas_sso_login_path'] = [
       '#type' => 'textfield',
@@ -44,6 +45,7 @@ class ConfigForm extends ConfigFormBase {
       '#maxlength' => 255,
       '#size' => 255,
       '#default_value' => $config->get('cas_sso_login_path'),
+      '#required' => TRUE,
     ];
     $form['cas_sso_logout_title'] = [
       '#type' => 'textfield',
@@ -51,6 +53,7 @@ class ConfigForm extends ConfigFormBase {
       '#maxlength' => 64,
       '#size' => 32,
       '#default_value' => $config->get('cas_sso_logout_title'),
+      '#required' => TRUE,
     ];
     $form['cas_sso_logout_path'] = [
       '#type' => 'textfield',
@@ -58,6 +61,7 @@ class ConfigForm extends ConfigFormBase {
       '#maxlength' => 255,
       '#size' => 255,
       '#default_value' => $config->get('cas_sso_logout_path'),
+      '#required' => TRUE,
     ];
 
 
@@ -69,6 +73,14 @@ class ConfigForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
+
+    if(preg_match('/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}((:[0-9]{1,5})?\/.*)?$/i' ,$form_state->getValue('cas_sso_login_path')) == 0 && preg_match('/^\/.*?$/i' ,$form_state->getValue('cas_sso_login_path')) == 0 ) {
+      $form_state->setErrorByName('cas_login_path', $this->t('The CAS sso login path has to be a absolute (beginning with http(s)://) or a path absolute url (beginning with /).'));
+    }
+
+    if(preg_match('/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}((:[0-9]{1,5})?\/.*)?$/i' ,$form_state->getValue('cas_sso_logout_path')) == 0 && preg_match('/^\/.*?$/i' ,$form_state->getValue('cas_sso_logout_path')) == 0 ) {
+      $form_state->setErrorByName('cas_logout_path', $this->t('The CAS sso logout path has to be a absolute (beginning with http(s)://) or a path absolute url (beginning with /).'));
+    }
   }
 
   /**
